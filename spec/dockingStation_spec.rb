@@ -5,10 +5,11 @@ describe DockingStation do
 
   it { is_expected.to respond_to(:release_bike) }
   it { is_expected.to respond_to(:dock).with(1).argument }
-  it { is_expected.to respond_to(:bike) }
+  it { is_expected.to respond_to(:bikes) }
 
   it 'releases a working bike' do
-    subject.capacity = 1
+    # subject.capacity = 1
+    subject.dock(bike)
     released_bike = subject.release_bike
 
     expect(released_bike).to be_working
@@ -21,7 +22,7 @@ describe DockingStation do
   it 'shows if a bike is docked' do
     subject.dock(bike)
 
-    expect(subject.bike).to eq bike
+    expect(subject.bikes).to eq bike
   end
 
   it 'does not release a bike if there are no bikes' do
