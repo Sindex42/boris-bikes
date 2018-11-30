@@ -5,7 +5,7 @@ describe DockingStation do
 
   it { is_expected.to respond_to(:release_bike) }
   it { is_expected.to respond_to(:dock).with(1).argument }
-  it { is_expected.to respond_to(:bikes) }
+  it { is_expected.to respond_to(:bike_collection) }
 
   it 'releases a working bike' do
     subject.dock(bike)
@@ -21,7 +21,7 @@ describe DockingStation do
   it 'shows if a bike is docked' do
     subject.dock(bike)
 
-    expect(subject.bikes).to eq [bike]
+    expect(subject.bike_collection).to eq [bike]
   end
 
   it 'does not release a bike if there are no bikes' do
@@ -38,6 +38,6 @@ describe DockingStation do
     # set up a docking station
     # checking 20 tiimes of docking a bike results in a capcity of 20
     20.times { subject.dock Bike.new }
-    expect(subject.bikes.count).to be(20)
+    expect(subject.bike_collection.count).to be(20)
   end
 end
